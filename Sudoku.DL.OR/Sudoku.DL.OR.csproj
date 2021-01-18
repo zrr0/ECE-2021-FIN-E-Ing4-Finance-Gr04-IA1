@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DlxLib" Version="1.3.0" />
-    <PackageReference Include="Microsoft.ML.Probabilistic.Visualizers.Windows" Version="0.3.1810.501" />
+    <PackageReference Include="Google.OrTools" Version="8.1.8487" />
   </ItemGroup>
 
   <ItemGroup>
