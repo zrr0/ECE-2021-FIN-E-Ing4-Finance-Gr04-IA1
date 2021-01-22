@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
-namespace Kermalis.SudokuSolver.Core
+namespace Sudoku.SolverHumain
 {
     internal sealed class Solver
     {

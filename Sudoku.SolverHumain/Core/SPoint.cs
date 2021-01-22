@@ -1,4 +1,4 @@
-﻿namespace Kermalis.SudokuSolver.Core
+﻿namespace Sudoku.SolverHumain
 {
     internal sealed class SPoint
     {

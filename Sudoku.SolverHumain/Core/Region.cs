@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Kermalis.SudokuSolver.Core
+namespace Sudoku.SolverHumain
 {
     internal sealed class Region : IEnumerable<Cell>
     {

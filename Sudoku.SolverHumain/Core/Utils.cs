@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Kermalis.SudokuSolver.Core
+namespace Sudoku.SolverHumain
 {
     internal static class Utils
     {
