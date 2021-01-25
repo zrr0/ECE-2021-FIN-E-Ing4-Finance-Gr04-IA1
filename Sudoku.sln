@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Core", "Sudoku.Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Benchmark", "Sudoku.Benchmark\Sudoku.Benchmark.csproj", "{89EB5D0A-79B2-46EC-BEF7-FB6EC14DAB8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Probabilistic", "Sudoku.Probabilistic\Sudoku.Probabilistic.csproj", "{B31C8F97-8559-415B-B773-C4BE716B59BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Probabilistic", "Sudoku.Probabilistic\Sudoku.Probabilistic.csproj", "{B31C8F97-8559-415B-B773-C4BE716B59BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.SolverHumain", "Sudoku.SolverHumain\Sudoku.SolverHumain.csproj", "{1C7C2C2E-A71A-4A41-ADDB-184359AF2835}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.DL.OR", "Sudoku.DL.OR\Sudoku.DL.OR.csproj", "{A5920DFB-F119-4E60-AF59-BB7C77407CA5}"
 EndProject
@@ -33,6 +35,10 @@ Global
 		{B31C8F97-8559-415B-B773-C4BE716B59BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B31C8F97-8559-415B-B773-C4BE716B59BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B31C8F97-8559-415B-B773-C4BE716B59BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C7C2C2E-A71A-4A41-ADDB-184359AF2835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C7C2C2E-A71A-4A41-ADDB-184359AF2835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C7C2C2E-A71A-4A41-ADDB-184359AF2835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C7C2C2E-A71A-4A41-ADDB-184359AF2835}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

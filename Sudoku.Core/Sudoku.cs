@@ -16,7 +16,7 @@ namespace Sudoku.Core
     /// </summary>
     public class GrilleSudoku:ICloneable
     {
-
+      
 
 
         /// <summary>
