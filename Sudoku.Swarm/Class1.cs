@@ -9,9 +9,15 @@ namespace Sudoku.Swarm
     {
         public void Solve(Core.GrilleSudoku s)
         {
-            Console.WriteLine(s.ToString());
-
-            var sudoku = SudokuCombinatorialEvolutionSolver.Sudoku.Difficult;
+            int[,] converted = new int[9,9];
+            for (int row = 0; row < 9; row++)
+            {
+                for (int column = 0; column < 9; column++)
+                {
+                    converted[row,column] = s.Cellules[row * 9 + column];
+                }
+            }
+            var sudoku = SudokuCombinatorialEvolutionSolver.Sudoku.New(converted);
 
             var solver = new SudokuSolver();
 
@@ -19,7 +25,15 @@ namespace Sudoku.Swarm
 
             Console.WriteLine(solvedSudoku.ToString());
 
-            //return (solvedSudoku.ToString());
+            for (int row = 0; row < 9; row++)
+            {
+                for (int column = 0; column < 9; column++)
+                {
+                    s.Cellules[row * 9 + column] = solvedSudoku.CellValues[row, column];
+                }
+            }
+
+
         }
     }
 }
