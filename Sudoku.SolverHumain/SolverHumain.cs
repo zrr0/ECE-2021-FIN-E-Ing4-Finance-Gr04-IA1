@@ -16,7 +16,7 @@ namespace Sudoku.SolverHumain
                 list_cell.Add(ligne);
                  foreach(var j in System.Linq.Enumerable.Range(0, 9))
                 {
-                    ligne.Add(s.GetCellule(i, j));
+                    ligne.Add(s.GetCellule(j, i));
 
                 }
             }
