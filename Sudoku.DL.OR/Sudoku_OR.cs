@@ -54,11 +54,6 @@ namespace Sudoku.DL.OR
                 solver.Add((from j in cellIndices
                     select grid[j, i]).ToArray().AllDifferent());
 
-
-
-
-
-
             }
 
             //Cellules
@@ -66,21 +61,12 @@ namespace Sudoku.DL.OR
             {
                 foreach (int j in CELL)
                 {
-                    //ERREUR LIGNE 68
                     solver.Add((from di in CELL
                                 from dj in CELL
-                                select grid[i * cell_size + di, j * cell_size + dj] // Index was outside the bounds of the array
+                                select grid[i * cell_size + di, j * cell_size + dj] 
                                  ).ToArray().AllDifferent());
                 }
             }
-
-
-
-
-
-
-
-
 
             //Début de la résolution
             DecisionBuilder db = solver.MakePhase(grid_flat,
@@ -90,7 +76,8 @@ namespace Sudoku.DL.OR
 
             //Mise à jour du sudoku
             //int n = cell_size * cell_size;
-            //Or on sait que cell_size = 9 -> voir ligne 12
+            //Or on sait que cell_size = 3 -> voir ligne 13
+            //Inspiré de l'exemple : taille des cellules identique
             while (solver.NextSolution())
             {
                 for (int i = 0; i < 9; i++)
