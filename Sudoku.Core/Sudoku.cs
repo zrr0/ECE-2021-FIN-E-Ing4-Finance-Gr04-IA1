@@ -43,6 +43,33 @@ namespace Sudoku.Core
 
 
 
+        public static readonly List<List<int>> VoisinagesParCellule;
+        
+
+        static GrilleSudoku()
+        {
+            VoisinagesParCellule = new List<List<int>>();
+            foreach (var indicesCellule in IndicesCellules)
+            {
+                var cellVoisinage = new List<int>();
+                VoisinagesParCellule.Add(cellVoisinage);
+                foreach (var voisinage in TousLesVoisinages)
+                {
+                    if (voisinage.Contains(indicesCellule))
+                    {
+                        foreach (var voisin in voisinage)
+                        {
+                            if (!cellVoisinage.Contains(voisin))
+                            {
+                                cellVoisinage.Add(voisin);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
 
         /// <summary>
         /// constructor that initializes the board with 81 cells
