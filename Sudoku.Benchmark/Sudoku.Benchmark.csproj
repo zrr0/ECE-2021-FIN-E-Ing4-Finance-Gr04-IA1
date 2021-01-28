@@ -14,8 +14,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sudoku.Core\Sudoku.Core.csproj" />
+
     <ProjectReference Include="..\Sudoku.Probabilistic\Sudoku.Probabilistic.csproj" />
     <ProjectReference Include="..\Sudoku.DL.OR\Sudoku.DL.OR.csproj" />
     <ProjectReference Include="..\Sudoku.SolverHumain\Sudoku.SolverHumain.csproj" />
+    <ProjectReference Include="..\Sudoku.DL\Sudoku.DL.csproj" />
+
   </ItemGroup>
 </Project>
