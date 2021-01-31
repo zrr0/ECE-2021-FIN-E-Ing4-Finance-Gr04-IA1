@@ -9,78 +9,30 @@ namespace Sudoku.DL
 {
     public class DLSolver : ISudokuSolver
     {
-         public void Solve(GrilleSudoku s)
-        //private static void Main()
+        public void Solve(GrilleSudoku grid)
         {
-            //System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            var x = 0;
-            
-            while (x != 1)
-                
-            {Console.WriteLine("oui1");
-                /*
-                 string[] remplir = new string[9];
-                 //string b = Convert.ToString( s.GetCellule(0, 0));
-                 //if (b == "0") { b = " "; }
-                 for (int row = 0; row <= 8; row++)
-                 {
-                     string b = "";
-                     for (int col = 0; col <= 8; col++)
-                     {
-                         
-                             String a = Convert.ToString(s.GetCellule(row, col));
-                             if (a == "0")
-                             { a = " "; }
-                                 //b = int.Parse(string.Concat(b,a));
-                              b = b + a;
-                         
+   
+            var internalRows = BuildInternalRowsForGrid(grid);
+            var dlxRows = BuildDlxRows(internalRows);
+            var solutions = new Dlx()
+                .Solve(dlxRows, d => d, r => r)
+                .Where(solution => VerifySolution(internalRows, solution))
+                .ToImmutableList();
 
-                     }
-                     remplir[row] = b;
-                     //Console.WriteLine(remplir[row]);
-                     Console.WriteLine(remplir[row].Count());
-                 }
+            Console.WriteLine();
 
-          
-                var grid = new Grid(ImmutableList.Create(
-                    remplir[0], remplir[1], remplir[2], remplir[3], remplir[4], remplir[5], remplir[6], remplir[7], remplir[8]));
-               */
-                var grid = new Grid(ImmutableList.Create(
-                    "6 4 9 7 3",
-                    "  3    6 ",
-                    "       18",
-                    "   18   9",
-                    "     43  ",
-                    "7   39   ",
-                    " 7       ",
-                    " 4    8  ",
-                    "9 8 6 4 5"));
-                Console.WriteLine("oui");
-                grid.Draw();
-                 var internalRows = BuildInternalRowsForGrid(grid);
-                 var dlxRows = BuildDlxRows(internalRows);
-                 var solutions = new Dlx()
-                     .Solve(dlxRows, d => d, r => r)
-                     .Where(solution => VerifySolution(internalRows, solution))
-                     .ToImmutableList();
-
-                 Console.WriteLine();
-
-                 if (solutions.Any())
-                 {
-                     Console.WriteLine($"First solution (of {solutions.Count}):");
-                     Console.WriteLine();
-                     DrawSolution(internalRows, solutions.First());
-                     Console.WriteLine();
-                 }
-                 else
-                 {
-                     Console.WriteLine("No solutions found!");
-                 }
-
-                var oui = Console.ReadLine();
-                
+            if (solutions.Any())
+            {
+                Console.WriteLine($"First solution (of {solutions.Count}):");
+                Console.WriteLine();
+                SolutionToGrid(grid, internalRows, solutions.First());
+                Console.WriteLine();
             }
+            else
+            {
+                Console.WriteLine("No solutions found!");
+            }
+    
         }
 
         private static IEnumerable<int> Rows => Enumerable.Range(0, 9);
@@ -91,12 +43,12 @@ namespace Sudoku.DL
             select Tuple.Create(row, col);
         private static IEnumerable<int> Digits => Enumerable.Range(1, 9);
 
-        private static IImmutableList<Tuple<int, int, int, bool>> BuildInternalRowsForGrid(Grid grid)
+        private static IImmutableList<Tuple<int, int, int, bool>> BuildInternalRowsForGrid(GrilleSudoku grid)
         {
             var rowsByCols =
                 from row in Rows
                 from col in Cols
-                let value = grid.ValueAt(row, col)
+                let value = grid.GetCellule(row, col)
                 select BuildInternalRowsForCell(row, col, value);
 
             return rowsByCols.SelectMany(cols => cols).ToImmutableList();
@@ -197,64 +149,41 @@ namespace Sudoku.DL
             return false;
         }
 
-        private static Grid SolutionToGrid(
-            IReadOnlyList<Tuple<int, int, int, bool>> internalRows,
-            Solution solution)
-        {
-            var rowStrings = solution.RowIndexes
-                .Select(rowIndex => internalRows[rowIndex])
-                .OrderBy(t => t.Item1)
-                .ThenBy(t => t.Item2)
-                .GroupBy(t => t.Item1, t => t.Item3)
-                .Select(value => string.Concat(value))
-                .ToImmutableList();
-            return new Grid(rowStrings);
+         private static void SolutionToGrid(GrilleSudoku sudoku, IReadOnlyList<Tuple<int, int, int, bool>> internalRows, Solution solution)
+         {
+             var rowStrings = solution.RowIndexes
+                 .Select(rowIndex => internalRows[rowIndex])
+                 .OrderBy(t => t.Item1)
+                 .ThenBy(t => t.Item2)
+                 .GroupBy(t => t.Item1, t => t.Item3)
+                 .Select(value => string.Concat(value))
+                 .ToImmutableList();
+
+            String w = rowStrings.ItemRef(0);
+
+            for (int a = 1; a <= 8; a++)
+            {
+                
+                w = w+ rowStrings.ItemRef(a);
+            }
+            for (int a = 1; a <= 162; a++)
+            {
+                if(a%2 == 1)
+                {
+                    w = w.Insert(a, " ");
+                }
+            }
+            String[] Sub = w.Split(' ');
+            int cpt = 0;
+            for (int i = 0; i <= 8; i++)
+            {            
+                for (int j = 0; j <= 8; j++)
+                {
+                    sudoku.SetCell(i, j, int.Parse(Sub[cpt]));
+                    cpt = cpt + 1;
+                }
+            }
+           // Console.WriteLine(sudoku.ToString());
         }
-
-        private static void DrawSolution(
-            IReadOnlyList<Tuple<int, int, int, bool>> internalRows,
-            Solution solution)
-        {
-            SolutionToGrid(internalRows, solution).Draw();
-        }
-    
-    /*
-    private void DrawSolution(object internalRows, Solution solution)
-    {
-        throw new NotImplementedException();
-    }
-
-    private bool VerifySolution(object internalRows, Solution solution)
-    {
-        throw new NotImplementedException();
-    }
-
-    private object BuildDlxRows(object internalRows)
-    {
-        throw new NotImplementedException();
-    }
-
-    private object BuildInternalRowsForGrid(Grid grid)
-    {
-        throw new NotImplementedException();
-    }
-
-    private class Dlx
-    {
-        public Dlx()
-        {
-        }
-        internal IEnumerable<Solution> Solve(object dlxRows, Func<object, object> p1, Func<object, object> p2)
-        {
-            throw new NotImplementedException();
-        }
-
-           internal IEnumerable<Solution> Solve(ImmutableList<ImmutableList<int>>, ImmutableList<int>, int>(ImmutableList<ImmutableList<int>>data, Func<ImmutableList<ImmutableList<int>>,
-                    IEnumerable<ImmutableList<int>>>iterateRows, Func<ImmutableList<int>, IEnumerable<int>>iterateCols)
-           {
-               throw new NotImplementedException();
-           }
-    }
-*/
     }
 }
