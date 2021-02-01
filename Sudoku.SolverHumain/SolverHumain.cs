@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Sudoku.SolverHumain
@@ -10,6 +11,14 @@ namespace Sudoku.SolverHumain
     {
         public void Solve(GrilleSudoku s)
         {
+            Solve2(s);
+        }
+
+
+
+        public void Solve1(GrilleSudoku s)
+        {
+
             List<List<int>> list_cell = new List<List<int>>();
             foreach (var i in System.Linq.Enumerable.Range(0, 9))
             {
@@ -34,11 +43,9 @@ namespace Sudoku.SolverHumain
 
                 }
             }
+
+
         }
-
-
-
-
 
 
 
@@ -57,15 +64,28 @@ namespace Sudoku.SolverHumain
             bool deadEnd = false;
 
             List<List<int>> list_cell = new List<List<int>>();
+            foreach (var i in System.Linq.Enumerable.Range(0, 9))
+            {
+                var ligne = new List<int>(9);
+                list_cell.Add(ligne);
+                foreach (var j in System.Linq.Enumerable.Range(0, 9))
+                {
+                    ligne.Add(s.GetCellule(j, i));
+
+                }
+            }
+
+
+
             var monTableau = list_cell.Select(l => l.ToArray()).ToArray();
             var monPuzzle = new Puzzle(monTableau, false);
             var monSolver = new Solver(monPuzzle);
-            monSolver.DoWork(this, new System.ComponentModel.DoWorkEventArgs(null));
+            //monSolver.DoWork(this, new System.ComponentModel.DoWorkEventArgs(null));
 
-            //List allCells = null;
-            Stack exploredCellValues = null;
+            List<Cell> allCells = null;
+            Stack<BackTrackingState> exploredCellValues = null;
 
-            //monPuzzle.RefreshCandidates();
+            monPuzzle.RefreshCandidates();
             do
             {
                 deadEnd = false;
@@ -96,24 +116,24 @@ namespace Sudoku.SolverHumain
                         }
                     }
                     // Solved or failed to solve
-                    if (full || (!changed && !RunTechnique(monPuzzle)))
+                    if (full || (!changed && !monSolver.RunTechnique()))
                     {
                         break;
                     }
                 } while (true);
 
-                //full = monPuzzle.Rows.All(row => row.SetCell.All(row,c, c.Value != 0));
-                full = s.SetCell(x, y, monPuzzle.Rows[x][y].Value);
+                full = monPuzzle.Rows.All(row => row.All(c => c.Value != 0));
+                //full = s.SetCell(x, y, monPuzzle.Rows[x][y].Value);
 
                 // If puzzle isn't full, we do exploration
                 if (!full)
                 {
                     // Les Sudokus les plus difficiles ne peuvent pas être résolus avec un stylo bille, c'est à dire en inférence pure.
                     // Il va falloir lacher le stylo bille et prendre le crayon à papier et la gomme pour commencer une exploration fondée sur des hypothèses avec possible retour en arrière
-                    if (list_cell == null)
+                    if (allCells == null)
                     {
-                        list_cell = monPuzzle.Rows.SelectMany((row, rowIdx) => row.Cells).ToList();
-                        exploredCellValues = new Stack();
+                        allCells = monPuzzle.Rows.SelectMany((row, rowIdx) => row).ToList();
+                        exploredCellValues = new Stack<BackTrackingState>();
                     }
                     //puzzle.RefreshCandidates();
 
@@ -121,12 +141,12 @@ namespace Sudoku.SolverHumain
                     // cf. les slides et le problème du "coffre de voiture" abordé en cours
 
                     //heuristique MRV
-                    var minCandidates = list_cell.Min(cell => cell.Candidates.Count > 0 ? cell.Candidates.Count : int.MaxValue);
+                    var minCandidates = allCells.Min(cell => cell.Candidates.Count > 0 ? cell.Candidates.Count : int.MaxValue);
 
                     if (minCandidates != int.MaxValue)
                     {
                         // Utilisation de l'heuristique Deg: de celles qui ont le moins de candidats à égalité, on choisi celle la plus contraignante, celle qui a le plus de voisins (on pourrait faire mieux avec le nombre de candidats en commun avec ses voisins)
-                        var candidateCells = list_cell.Where(cell => cell.Candidates.Count == minCandidates);
+                        var candidateCells = allCells.Where(cell => cell.Candidates.Count == minCandidates);
                         //var degrees = candidateCells.Select(candidateCell => new {Cell = candidateCell, Degree = candidateCell.GetCellsVisible().Aggregate(0, (sum, neighbour) => sum + neighbour.Candidates.Count) });
                         var degrees = candidateCells.Select(candidateCell => new { Cell = candidateCell, Degree = candidateCell.GetCellsVisible().Count(c => c.Value == 0) }).ToList();
                         //var targetCell = list_cell.First(cell => cell.Candidates.Count == minCandidates);
@@ -138,7 +158,7 @@ namespace Sudoku.SolverHumain
                         BackTrackingState currentlyExploredCellValues;
                         if (exploredCellValues.Count == 0 || !exploredCellValues.Peek().Cell.Equals(targetCell))
                         {
-                            currentlyExploredCellValues = new BackTrackingState() { Board = monPuzzle.GetBoard(), Cell = targetCell, ExploredValues = new List() };
+                            currentlyExploredCellValues = new BackTrackingState() { Board = monPuzzle.GetBoard(), Cell = targetCell, ExploredValues = new List<int>() };
                             exploredCellValues.Push(currentlyExploredCellValues);
                         }
                         else
@@ -234,28 +254,47 @@ namespace Sudoku.SolverHumain
 
 
 
-            s = transformationToSudoku(monPuzzle);
+            foreach (var i in System.Linq.Enumerable.Range(0, 9))
+            {
+                foreach (var j in System.Linq.Enumerable.Range(0, 9))
+                {
+                    s.SetCell(i, j, monPuzzle.Rows[i][j].Value);
 
-            return s;
+                }
+            }
+
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
+    public struct BackTrackingState
+    {
+        public Cell Cell { get; set; }
+
+        public List<int> ExploredValues { get; set; }
+
+        public int[][] Board { get; set; }
+
+
+        public void Backtrack(Puzzle objPuzzle)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (objPuzzle[i, j].Value != Board[i][j])
+                    {
+                        objPuzzle[i, j].Set(Board[i][j]);
+                    }
+                }
+            }
+            objPuzzle.RefreshCandidates();
+        }
+    }
+
+
 }
 
 
 
-    
