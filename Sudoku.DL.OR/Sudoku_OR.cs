@@ -84,12 +84,10 @@ namespace Sudoku.DL.OR
                 {
                     for (int j = 0; j < 9; j++)
                     {
-                        Console.Write("{0} ", grid[i, j].Value());
+                        s.SetCell(i,j, (int) grid[i,j].Value());
                     }
-                    Console.WriteLine();
                 }
 
-                Console.WriteLine();
             }
 
             //Console.WriteLine("\nSolutions: {0}", solver.Solutions());
