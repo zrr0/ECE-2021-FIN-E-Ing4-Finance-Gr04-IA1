@@ -9,7 +9,8 @@ namespace Sudoku.DL.OR
     public class Sudoku_OR : ISudokuSolver
     {
         //2 Lignes de code supplémentaire
-        int cell_size = 3;
+        int cell_size=3;
+        
         IEnumerable<int> CELL = Enumerable.Range(0, 3);
 
 
@@ -17,24 +18,21 @@ namespace Sudoku.DL.OR
 
         public void Solve(GrilleSudoku s)
         {
-            
-            //Création d'un solver Or-tools
 
+            //Création d'un solver Or-tools
             Solver solver = new Solver("Sudoku");
             
             //Création de la grille de variables
-            //Decision variables
+            //Variables de décision
 
-            IntVar[,] grid = solver.MakeIntVarMatrix(9, 9, 1, 9, "grid");
-            IntVar[] grid_flat = grid.Flatten();
-
-            
+            IntVar[,] grid = solver.MakeIntVarMatrix(9, 9, 1, 9, "grid");//VERIFIER
+            IntVar[] grid_flat = grid.Flatten();                         //VERIFIER 
             
             
             //Masque de résolution
-            foreach (int i in cellIndices)
+            for (int i=0; i < cellIndices.Count(); i++)
             {
-                foreach (int j in cellIndices)
+                for (int j=0; j < cellIndices.Count(); j++)
                 {
                     if (s.GetCellule(i, j) > 0)
                     {
@@ -44,7 +42,7 @@ namespace Sudoku.DL.OR
             }
 
             //Un chiffre ne figure qu'une seule fois par ligne/colonne/cellule
-            foreach (int i in cellIndices)
+            for (int i=0; i < cellIndices.Count(); i++)
             {
                 // Lignes
                 solver.Add((from j in cellIndices
@@ -57,9 +55,9 @@ namespace Sudoku.DL.OR
             }
 
             //Cellules
-            foreach (int i in CELL)
+            for (int i=0; i < CELL.Count(); i++)
             {
-                foreach (int j in CELL)
+                for (int j = 0; j < CELL.Count(); j++)
                 {
                     solver.Add((from di in CELL
                                 from dj in CELL
@@ -90,13 +88,10 @@ namespace Sudoku.DL.OR
 
             }
 
-            //Console.WriteLine("\nSolutions: {0}", solver.Solutions());
-            //Console.WriteLine("WallTime: {0}ms", solver.WallTime());
-            //Console.WriteLine("Failures: {0}", solver.Failures());
-            //Console.WriteLine("Branches: {0} ", solver.Branches());
-
             //Si 4 lignes dessus optionnelles, EndSearch est obligatoire
             solver.EndSearch();
+             
+           
 
         }
     }
