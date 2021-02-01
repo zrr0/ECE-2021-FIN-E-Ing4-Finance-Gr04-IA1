@@ -91,7 +91,7 @@ namespace Sudoku.SolverHumain
             e.Result = solved;
         }
 
-        private bool RunTechnique()
+        public bool RunTechnique()
         {
             foreach (SolverTechnique t in _techniques)
             {

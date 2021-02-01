@@ -1,6 +1,6 @@
 ﻿namespace Sudoku.SolverHumain
 {
-    internal sealed class SPoint
+    public sealed class SPoint
     {
         public int X { get; }
         public int Y { get; }
