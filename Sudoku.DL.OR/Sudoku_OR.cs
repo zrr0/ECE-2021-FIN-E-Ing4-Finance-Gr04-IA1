@@ -90,7 +90,7 @@ namespace Sudoku.DL.OR
 
             //Si 4 lignes dessus optionnelles, EndSearch est obligatoire
             solver.EndSearch();
-
+             
            
 
         }
