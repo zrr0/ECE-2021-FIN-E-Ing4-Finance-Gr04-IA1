@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Threading;
 using SudokuCombinatorialEvolutionSolver;
-using System.Linq;
 
 namespace Sudoku.Swarm
 {
-    public class Solver : Core.ISudokuSolver
+    public class SwarmSolver : Core.ISudokuSolver
     {
         public void Solve(Core.GrilleSudoku s)
         {
@@ -20,8 +18,18 @@ namespace Sudoku.Swarm
             var sudoku = SudokuCombinatorialEvolutionSolver.Sudoku.New(converted);
 
             var solver = new SudokuSolver();
+            var solvedSudoku = solver.Solve(sudoku, 200, 5000, 40);
+            // Possibilité d'incrémenter le nombre d'organismes jusqu'à obtenir une solution?
+            // Mais les meilleures optimisations à faire sont probablement dans le code du solver lui-même, auquel cas, il faudrait copier le code dans le projet plutôt que le référencer
 
-            var solvedSudoku = solver.Solve(sudoku,200,5000,40);
+            //var numOrganisms = 200;
+            //SudokuCombinatorialEvolutionSolver.Sudoku solvedSudoku;
+            //do
+            //{
+            //    solvedSudoku = solver.Solve(sudoku, numOrganisms, 5000, 1);
+            //    numOrganisms *= 2;
+            //} while (solvedSudoku.Error>0);
+
 
             Console.WriteLine(solvedSudoku.ToString());
 
