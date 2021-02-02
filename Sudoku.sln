@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Core", "Sudoku.Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Benchmark", "Sudoku.Benchmark\Sudoku.Benchmark.csproj", "{89EB5D0A-79B2-46EC-BEF7-FB6EC14DAB8B}"
 EndProject
+
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Probabilistic", "Sudoku.Probabilistic\Sudoku.Probabilistic.csproj", "{B31C8F97-8559-415B-B773-C4BE716B59BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.SolverHumain", "Sudoku.SolverHumain\Sudoku.SolverHumain.csproj", "{1C7C2C2E-A71A-4A41-ADDB-184359AF2835}"
@@ -15,6 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.DL.OR", "Sudoku.DL.O
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.DL", "Sudoku.DL\Sudoku.DL.csproj", "{38B36F42-19A7-48A5-B5CA-EA0FC79935C0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Swarm", "Sudoku.Swarm\Sudoku.Swarm.csproj", "{42926FE8-983F-40C9-8EC8-221A2F1A9759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.CNN", "Sudoku.CNN\Sudoku.CNN.csproj", "{3BB1DA95-60A3-4D0F-96ED-8DD70EFBAC9E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolverNeuralNet", "..\..\..\Desktop\S2\IA\TP\Example Keras\SolverNeuralNet\SolverNeuralNet.csproj", "{6EC151BB-D0AE-456C-8B16-5970461189F1}"
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +56,14 @@ Global
 		{42926FE8-983F-40C9-8EC8-221A2F1A9759}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42926FE8-983F-40C9-8EC8-221A2F1A9759}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42926FE8-983F-40C9-8EC8-221A2F1A9759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BB1DA95-60A3-4D0F-96ED-8DD70EFBAC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BB1DA95-60A3-4D0F-96ED-8DD70EFBAC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BB1DA95-60A3-4D0F-96ED-8DD70EFBAC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BB1DA95-60A3-4D0F-96ED-8DD70EFBAC9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EC151BB-D0AE-456C-8B16-5970461189F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC151BB-D0AE-456C-8B16-5970461189F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC151BB-D0AE-456C-8B16-5970461189F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC151BB-D0AE-456C-8B16-5970461189F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
