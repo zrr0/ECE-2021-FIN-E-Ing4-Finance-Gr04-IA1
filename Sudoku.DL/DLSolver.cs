@@ -11,17 +11,21 @@ namespace Sudoku.DL
 
         public void Solve(GrilleSudoku grid)
         {
-            Sud = new Sudoku(grid);
-            s.sudoku = Sud;
+            GrilleSudoku GrilleSudokuInitial = grid;
+            //Sud = new Sudoku(grid); //creation d'un nouveau sudoku à partir du sudoku que l'on recoit
+            s.sudoku = grid; // affecte 
             s.Solve();
-            Sud = s.sudoku;
+            grid = s.sudoku;
+
+            /*
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
                     grid.SetCell(i, j, Sud.getCaseSudoku(i,j));
                 }
-            }
+            }*/
         }
+
     }
 }
