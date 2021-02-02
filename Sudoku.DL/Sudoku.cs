@@ -1,7 +1,5 @@
 ﻿using Sudoku.Core;
 using System;
-using System.Collections.Generic;
-
 
 namespace Sudoku.DL
 {
@@ -10,8 +8,6 @@ namespace Sudoku.DL
         private int[][] initialSudoku;  //Sudoku original et vide (ne peut être modifié)
         private int[][] workingSudoku;  //Sudoku sur lequel vous allez travailler 
 
-
-        /*--------------------Constructeur--------------------*/
         public Sudoku(GrilleSudoku grid)  //Constructeur
         {
             initialSudoku = new int[9][];
@@ -33,11 +29,6 @@ namespace Sudoku.DL
             initialSudoku = stringToSudoku(phrase);
             workingSudoku = stringToSudoku(phrase);
         }
-
-        /*--------------------Getter & Setter--------------------*/
-
-
- 
 
         public int[][] getSudoku(int[][] sudoku)  //récupèrele sudoku de "travail"
         {
@@ -74,7 +65,6 @@ namespace Sudoku.DL
             return true;
         }
 
-
         public bool setCaseSudoku(int line, int column, int value)  //Attribue une nouvelle case au sudoku de "travail"
         {
             if (!checkCase(line, column, value, "setCaseSudoku"))  //Renvoie false si ce n'est pas autorisé
@@ -84,9 +74,7 @@ namespace Sudoku.DL
 
             return true;
         }
- 
 
-        /*--------------------Outils--------------------*/
         public int[][] stringToSudoku(String stringSudoku)  //Transforme un String en sudoku (tableau de int[9][9])
         {
             if (stringSudoku.Length != 81)

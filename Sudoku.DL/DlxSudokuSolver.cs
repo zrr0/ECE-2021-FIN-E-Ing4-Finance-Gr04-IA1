@@ -1,6 +1,3 @@
-using Sudoku.Core;
-
-
 namespace Sudoku.DL
 {
     class DlxSudokuSolver
