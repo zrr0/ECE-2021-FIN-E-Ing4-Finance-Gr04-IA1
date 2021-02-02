@@ -19,7 +19,7 @@
     <ProjectReference Include="..\Sudoku.DL.OR\Sudoku.DL.OR.csproj" />
     <ProjectReference Include="..\Sudoku.SolverHumain\Sudoku.SolverHumain.csproj" />
     <ProjectReference Include="..\Sudoku.DL\Sudoku.DL.csproj" />
-
     <ProjectReference Include="..\Sudoku.Swarm\Sudoku.Swarm.csproj" />
+    <ProjectReference Include="..\Sudoku.recursive.backtracking\Sudoku.recursive.backtracking.csproj" />
   </ItemGroup>
 </Project>
