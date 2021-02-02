@@ -23,15 +23,5 @@ namespace Sudoku.DL
                 }
             }
         }
-
-        
-     
-            
-        
-
-
-
-
-
     }
 }
