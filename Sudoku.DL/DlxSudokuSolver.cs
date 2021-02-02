@@ -13,6 +13,5 @@ namespace Sudoku.DL
             s.search();
             sudoku.setSudoku(s.convertMatrixSudoku());
         }
-
     }
 }
