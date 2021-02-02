@@ -1,6 +1,4 @@
 ﻿using Sudoku.Core;
-using System;
-
 
 namespace Sudoku.DL
 {
@@ -23,15 +21,5 @@ namespace Sudoku.DL
                 }
             }
         }
-
-        
-     
-            
-        
-
-
-
-
-
     }
 }

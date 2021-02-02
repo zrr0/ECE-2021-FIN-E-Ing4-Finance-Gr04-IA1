@@ -1,6 +1,3 @@
-using Sudoku.Core;
-
-
 namespace Sudoku.DL
 {
     class DlxSudokuSolver
@@ -13,6 +10,5 @@ namespace Sudoku.DL
             s.search();
             sudoku.setSudoku(s.convertMatrixSudoku());
         }
-
     }
 }
