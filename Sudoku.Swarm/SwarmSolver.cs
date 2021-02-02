@@ -8,6 +8,7 @@ namespace Sudoku.Swarm
     {
         public  void Solve(GrilleSudoku s)
         {
+            //conversion de formats en int[,]
             int[,] converted = new int[9,9];
             for (int row = 0; row < 9; row++)
             {
@@ -32,9 +33,9 @@ namespace Sudoku.Swarm
                 numOrganisms *= 2;
             } while (solvedSudoku.Error>0);
 
-
+            //affichage du sudoku
             Console.WriteLine(solvedSudoku.ToString());
-
+            //Reconversion depuis int[,]
             for (int row = 0; row < 9; row++)
             {
                 for (int column = 0; column < 9; column++)
