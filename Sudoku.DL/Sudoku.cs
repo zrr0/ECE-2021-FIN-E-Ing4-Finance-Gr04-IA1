@@ -36,9 +36,6 @@ namespace Sudoku.DL
 
         /*--------------------Getter & Setter--------------------*/
 
-
- 
-
         public int[][] getSudoku(int[][] sudoku)  //récupèrele sudoku de "travail"
         {
             sudoku = new int[9][];

@@ -360,5 +360,32 @@ namespace Sudoku.Core
             return NbErrors(originalPuzzle) == 0;
         }
 
+
+        public GrilleSudoku getSudoku(GrilleSudoku sudoku,GrilleSudoku trav)  //récupèrele sudoku de "travail"
+        {
+            
+            for (int i = 0; i < 9; i++)
+            {
+                
+                for (int j = 0; j < 9; j++)
+                {
+                    sudoku.SetCell(i,j,trav.GetCellule(i,j));
+                }
+            }
+            return sudoku;
+        }
+
+        public bool setSudoku(GrilleSudoku sudoku, GrilleSudoku trav)  //Attribue un nouveau sudoku de "travail" 
+        {
+
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    trav.SetCell(i, j, sudoku.GetCellule(i, j));
+                }
+            }
+            return true;
+        }
     }
 }

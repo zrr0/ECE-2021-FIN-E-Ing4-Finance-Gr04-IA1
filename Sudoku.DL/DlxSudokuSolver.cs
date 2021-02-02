@@ -5,7 +5,7 @@ namespace Sudoku.DL
 {
     class DlxSudokuSolver
     {
-        public Sudoku sudoku; //= new Sudoku();
+        public GrilleSudoku sudoku; 
 
         public void Solve()
         {
