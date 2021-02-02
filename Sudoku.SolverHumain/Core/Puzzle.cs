@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Sudoku.SolverHumain
 {
-    internal sealed class Puzzle
+    public sealed class Puzzle
     {
         public readonly ReadOnlyCollection<Region> Rows;
         public readonly ReadOnlyCollection<Region> Columns;
@@ -18,6 +18,18 @@ namespace Sudoku.SolverHumain
         private readonly Cell[][] _board;
 
         public Cell this[int x, int y] => _board[x][y];
+
+
+        public int[][] GetBoard()
+        {
+            return _board.Select(row => row.Select(cell => cell.Value).ToArray()).ToArray();
+        }
+
+        public bool IsValid()
+        {
+            return _board.All(row =>
+                row.All(cell => cell.Value != 0 && cell.GetCellsVisible().All(neighbour => neighbour.Value != cell.Value)));
+        }
 
         public Puzzle(int[][] board, bool isCustom)
         {

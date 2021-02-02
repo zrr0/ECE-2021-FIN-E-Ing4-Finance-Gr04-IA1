@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Sudoku.SolverHumain
 {
-    internal sealed class Region : IEnumerable<Cell>
+    public sealed class Region : IEnumerable<Cell>
     {
         private readonly Cell[] _cells;
 
