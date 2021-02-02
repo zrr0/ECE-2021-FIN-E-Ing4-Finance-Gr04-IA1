@@ -260,6 +260,7 @@ namespace Sudoku.SolverHumain
                 {
                     s.SetCell(i, j, monPuzzle.Rows[i][j].Value);
 
+
                 }
             }
 
@@ -268,13 +269,21 @@ namespace Sudoku.SolverHumain
     }
 
 
+        
+
+
     public struct BackTrackingState
     {
         public Cell Cell { get; set; }
 
+
         public List<int> ExploredValues { get; set; }
 
+
         public int[][] Board { get; set; }
+
+
+        public List<int> ExploredValues { get; set; }
 
 
         public void Backtrack(Puzzle objPuzzle)
@@ -295,6 +304,7 @@ namespace Sudoku.SolverHumain
 
 
 }
+
 
 
 
