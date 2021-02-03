@@ -1,7 +1,7 @@
 using Sudoku.Core;
 using System;
-
 namespace Sudoku.DL
+
 {
     class DlxSudokuSolver
     {
