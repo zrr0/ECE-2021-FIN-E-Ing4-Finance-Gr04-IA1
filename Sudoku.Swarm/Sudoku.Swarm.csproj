@@ -8,10 +8,6 @@
     <ProjectReference Include="..\Sudoku.Core\Sudoku.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="SudokuCombinatorialEvolutionSolver">
-      <HintPath>..\..\sudoku-combinatorial-evolution-solver\src\SudokuCombinatorialEvolutionSolver\bin\Debug\netcoreapp2.1\SudokuCombinatorialEvolutionSolver.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+  
 
 </Project>
