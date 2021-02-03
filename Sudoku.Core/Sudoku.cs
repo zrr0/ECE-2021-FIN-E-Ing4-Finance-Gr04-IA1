@@ -360,14 +360,14 @@ namespace Sudoku.Core
             return NbErrors(originalPuzzle) == 0;
         }
 
-        public void setSudoku(GrilleSudoku grille)  //Attribue des val au sudoku 
+        public void setSudoku(int[][] tab)  //Attribue des val au sudoku 
         {
 
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    Cellules[(9 * i) + j] = grille.GetCellule(i, j);
+                    Cellules[(9 * i) + j] = tab[i][j];
                 }
             }
         }

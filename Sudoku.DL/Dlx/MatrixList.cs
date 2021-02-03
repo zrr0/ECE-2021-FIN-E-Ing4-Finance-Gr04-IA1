@@ -17,65 +17,6 @@ namespace Dlx
             root.left = root;
         }
 
-        public MatrixList(int[,] grid)
-        {
-            root = new MatrixNodeHead("root (h)");
-            MatrixNode currentNode = root;
-            for (int j = 0; j < grid.GetLength(1); j++)
-            {
-                currentNode.right = new MatrixNodeHead("" + j);
-                currentNode.right.left = currentNode;
-                currentNode = currentNode.right;
-                currentNode.up = currentNode;
-                currentNode.down = currentNode;
-            }
-
-            currentNode.right = root;
-            root.left = currentNode;
-
-            MatrixNode[] prevNode = new MatrixNode[grid.GetLength(0)];
-            currentNode = root;
-
-            int cpt;
-            for (int j = 0; j < grid.GetLength(1); j++)
-            {
-                cpt = 0;
-                //Console.WriteLine(((MatrixNodeHead)currentNode).name);
-                currentNode = currentNode.right;
-                for (int i = 0; i < grid.GetLength(0); i++)
-                {
-                    if (grid[i, j] == 1)
-                    {
-                        MatrixNode tmp = new MatrixNode((MatrixNodeHead)currentNode.down);
-                        tmp.rowIndex = i;
-                        cpt++;
-                        tmp.down = currentNode.down;
-                        currentNode.down = tmp;
-                        tmp.up = currentNode;
-                        if (prevNode[i] == null)
-                        {
-                            ((MatrixNodeHead)tmp.down).item = tmp;
-                            tmp.right = tmp;
-                            tmp.left = tmp;
-                            prevNode[i] = tmp;
-                        }
-                        else
-                        {
-                            tmp.left = prevNode[i];
-                            tmp.right = prevNode[i].right;
-                            tmp.right.left = tmp;
-                            prevNode[i].right = tmp;
-                            prevNode[i] = tmp;
-                        }
-                        currentNode = currentNode.down;
-                    }
-                }
-                currentNode.down.up = currentNode;
-                currentNode = currentNode.down;
-                ((MatrixNodeHead)currentNode).size = cpt;
-            }
-        }
-
         public MatrixList(int[][] sudoku)
         {
             this.sudoku = sudoku;

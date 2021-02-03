@@ -11,7 +11,7 @@ namespace Sudoku.DL
         {
            Dlx.MatrixList s = new Dlx.MatrixList(ConvertToMatrix(trav.CloneSudoku()));           
             s.search();
-            sudoku.setSudoku(ConvertMatrixToGrid(s.convertMatrixSudoku()));
+            sudoku.setSudoku(s.convertMatrixSudoku());
         }
 
          public int[][] ConvertToMatrix(GrilleSudoku grille)
@@ -27,23 +27,5 @@ namespace Sudoku.DL
             }
             return sud;
         }
-
-        public GrilleSudoku ConvertMatrixToGrid(int[][] mat)
-        {
-            GrilleSudoku grille = sudoku;
-            for (int i = 0; i< 9; i++)
-            {
-                for (int j = 0; j< 9; j++)
-                {
-                    grille.SetCell(i, j, mat[i][j]);
-                }
-            }
-            return grille;
-
-        }
-        
-
-
-
-}
+    }
 }

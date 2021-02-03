@@ -11,7 +11,6 @@ namespace Sudoku.DL
 
         public void Solve(GrilleSudoku grid)
         {
-            GrilleSudoku GrilleSudokuInitial = grid;
             s.sudoku = grid; // affecte 
             s.Solve(grid);
             grid = s.sudoku;           
