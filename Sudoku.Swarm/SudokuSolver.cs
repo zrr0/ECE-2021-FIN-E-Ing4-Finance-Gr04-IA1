@@ -1,7 +1,4 @@
 using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Sudoku.Swarm
 {
@@ -30,52 +27,7 @@ namespace Sudoku.Swarm
 
             return bestSolution;
         }
-        // Avec le foreeach 
-        /*
-        public Sudoku Solve(Sudoku sudoku, int numOrganisms, int maxEpochs, int maxRestarts)
-        {
-            var error = int.MaxValue;
-            // var error_ultime = int.MaxValue;
-            Sudoku bestSolution_mieux = null;
 
-            var attempt = 0;
-
-            var restarts = Enumerable.Repeat(0, 2);
-            while (error != 0 && attempt < maxRestarts)
-            {
-
-                Parallel.ForEach(restarts, (i, state) =>
-                {
-                    Sudoku bestSolution = null;
-                    Console.WriteLine($"Attempt: {attempt}");
-                    _rnd = new Random(attempt);
-                    bestSolution = SolveInternal(sudoku, numOrganisms, maxEpochs);
-
-                    // bestSolution2 = SolveInternal(sudoku, numOrganisms, maxEpochs);
-                    if (bestSolution_mieux is null)
-                    {
-                        bestSolution_mieux = bestSolution;
-                    }
-
-                    if (bestSolution_mieux.Error > bestSolution.Error)
-                    {
-                        bestSolution_mieux = bestSolution;
-
-                    }
-
-                    error = bestSolution_mieux.Error;
-                    if (bestSolution.Error == 0)
-                    {
-
-                        state.Break();
-                    }
-
-                });
-                ++attempt;
-            }
-
-            return bestSolution_mieux;
-        }*/
         private Sudoku SolveInternal(Sudoku sudoku, int numOrganisms, int maxEpochs)
         {
             var numberOfWorkers = (int)(numOrganisms * 0.90);
@@ -107,7 +59,7 @@ namespace Sudoku.Swarm
             {
                 if (epoch % 1000 == 0)
                     Console.WriteLine($"Epoch: {epoch}, Best error: {bestError}");
-                
+
                 if (bestError == 0)
                     break;
 
@@ -191,7 +143,7 @@ namespace Sudoku.Swarm
                     bestError = hive[worstWorkerIndex].Error;
                     bestSolution = mergedSudoku;
                 }
-               
+
                 ++epoch;
             }
 
