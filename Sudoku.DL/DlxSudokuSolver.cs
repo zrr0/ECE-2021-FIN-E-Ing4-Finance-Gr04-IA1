@@ -5,13 +5,12 @@ namespace Sudoku.DL
 {
     class DlxSudokuSolver
     {
-        public GrilleSudoku sudoku; 
 
         public void Solve(GrilleSudoku trav)
         {
-           Dlx.MatrixList s = new Dlx.MatrixList(ConvertToMatrix(trav.CloneSudoku()));           
+           Dlx.MatrixList s = new Dlx.MatrixList(ConvertToMatrix(trav));           
             s.search();
-            sudoku.setSudoku(s.convertMatrixSudoku());
+            trav.setSudoku(s.convertMatrixSudoku());
         }
 
          public int[][] ConvertToMatrix(GrilleSudoku grille)
