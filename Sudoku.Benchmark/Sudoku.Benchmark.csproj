@@ -14,12 +14,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sudoku.Core\Sudoku.Core.csproj" />
-
     <ProjectReference Include="..\Sudoku.Probabilistic\Sudoku.Probabilistic.csproj" />
     <ProjectReference Include="..\Sudoku.DL.OR\Sudoku.DL.OR.csproj" />
     <ProjectReference Include="..\Sudoku.SolverHumain\Sudoku.SolverHumain.csproj" />
     <ProjectReference Include="..\Sudoku.DL\Sudoku.DL.csproj" />
-
     <ProjectReference Include="..\Sudoku.Swarm\Sudoku.Swarm.csproj" />
+    <ProjectReference Include="..\Z3Solver\Z3Solver.csproj" />
+    <ProjectReference Include="..\Sudoku_CNN\Sudoku_CNN.csproj" />
   </ItemGroup>
 </Project>
