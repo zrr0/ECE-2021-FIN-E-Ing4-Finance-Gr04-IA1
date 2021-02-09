@@ -24,7 +24,7 @@ namespace Sudoku.Benchmark
             {
                 try
                 {
-                    Console.WriteLine("Select Mode: \n1-Single Solver Test, \n2-Complete Benchmark (40 s max per sudoku), \n3-Complete Benchmark (5 mn max per GrilleSudoku), \n4-Exit program");
+                    Console.WriteLine("Select Mode: \n1-Single Solver Test, \n2-Complete Benchmark (10 s max per sudoku), \n3-Complete Benchmark (5 mn max per GrilleSudoku), \n4-Exit program");
                     var strMode = Console.ReadLine();
                     int.TryParse(strMode, out var intMode);
                     //Console.SetBufferSize(130, short.MaxValue - 100);
