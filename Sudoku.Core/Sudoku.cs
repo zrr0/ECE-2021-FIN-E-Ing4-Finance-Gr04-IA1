@@ -169,6 +169,12 @@ namespace Sudoku.Core
             return output.ToString();
         }
 
+        public List<List<int>> GetVoisins()
+        {
+            return (TousLesVoisinages);
+        }
+
+
       
         public int[] GetPossibilities(int x, int y)
         {
