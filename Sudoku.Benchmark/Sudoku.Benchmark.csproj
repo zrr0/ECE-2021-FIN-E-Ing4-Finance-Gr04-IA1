@@ -21,5 +21,7 @@
     <ProjectReference Include="..\Sudoku.Swarm\Sudoku.Swarm.csproj" />
     <ProjectReference Include="..\Z3Solver\Z3Solver.csproj" />
     <ProjectReference Include="..\Sudoku_CNN\Sudoku_CNN.csproj" />
+
+    <ProjectReference Include="..\Sudoku.recursive.backtracking\Sudoku.recursive.backtracking.csproj" />
   </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@ using BenchmarkDotNet.Order;
 using Perfolizer.Horology;
 using Sudoku.Core;
 
+
 namespace Sudoku.Benchmark
 {
     public class FiveMinutesBenchmarkSolvers : BenchmarkSolvers
