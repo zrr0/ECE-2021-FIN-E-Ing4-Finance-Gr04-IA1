@@ -56,6 +56,7 @@ namespace Sudoku.recursive.backtracking
     {
         
                 //fonction qui test si une valeur est bien absente d'une ligne 
+
                 public static bool absentSurLigne(int[,] grille, int ligne, int valeur)
                 {
                     for (int colonne = 0; colonne < 9; colonne++)
@@ -67,6 +68,7 @@ namespace Sudoku.recursive.backtracking
                 }
 
                 //fonction qui test si une valeur est bien absente d'une colonne 
+
                 public static bool absentSurColonne(int[,] grille, int colonne, int valeur)
                 {
                     for(int ligne = 0; ligne < 9; ligne++)
@@ -78,18 +80,20 @@ namespace Sudoku.recursive.backtracking
                 }
 
                 //fonction qui test si la valeur est bien absente sur le bloc 
+
                 public static bool absentSurBloc(int[,] grille, int valeur, int ligne, int colonne)
                 {
-                    int tmp_i = ligne - (ligne % 3);
-                    int tmp_j = colonne - (colonne % 3); 
-                    for(ligne=tmp_i; ligne<3; ligne++)
+                    int o = ligne - (ligne % 3);
+                    int p = colonne - (colonne % 3); 
+                    for(int i=o; i< o + 3; i++)
                     {
-                        for(colonne=tmp_j; colonne<3; colonne++)
+                        for(int j=p; j<p + 3; j++)
                         {
-                            if (grille[ligne, colonne] == valeur)
+                            if (grille[i, j] == valeur)
                                 return false;
                         }
                     }
+
                     return true;
                 }
 
