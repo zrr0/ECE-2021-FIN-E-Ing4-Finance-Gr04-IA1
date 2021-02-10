@@ -17,7 +17,7 @@ namespace Dlx
             root.left = root;
         }
 
-        public MatrixList(int[][] sudoku)
+        public MatrixList(int[][] sudoku) //constructeur
         {
             this.sudoku = sudoku;
             MatrixNode[] tmp = new MatrixNode[9 * 9 * 4];
@@ -175,7 +175,7 @@ namespace Dlx
                     }
                 }
             }
-        }
+        }  
 
         public int[][] convertMatrixSudoku()
         {
@@ -190,28 +190,26 @@ namespace Dlx
             return 9 * i + j;
         }
 
-        private int calcRNConstrain(int i, int value)
+        private int calcRNConstrain(int i, int value) //contrainte ligne nombre
         {
             return 81 + 9 * i + value - 1;
         }
 
-        private int calcCNConstrain(int j, int value)
+        private int calcCNConstrain(int j, int value) //contrainte colonne nombre
         {
             return 162 + 9 * j + value - 1;
         }
 
-        private int calcBNConstrain(int i, int j, int value)
+        private int calcBNConstrain(int i, int j, int value) // contrainte boite nombre
         {
             return 243 + ((i / 3) * 3 + j / 3) * 9 + value - 1;
         }
 
-        private void search(int k)
+        private void search(int k)  // algorithme de resolution 
         {
-            if (root.right == root)
+            if (root.right == root) // matrice vide
             {
-                //rowIndexes = new LinkedList<int>(rows);
                 stop = true;
-                //Console.WriteLine("yes : " + rows.Count);
                 return;
             }
 
@@ -295,7 +293,8 @@ namespace Dlx
             node.left.right = node;
             node.right.left = node;
         }
-
     }
-
 }
+
+
+
