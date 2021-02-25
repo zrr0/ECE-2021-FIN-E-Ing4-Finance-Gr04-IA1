@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z3Solver", "Z3Solver\Z3Solv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku_CNN", "Sudoku_CNN\Sudoku_CNN.csproj", "{3EEBBEBA-E73E-43E7-A4B3-4B28395D0AA0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Norvig", "Sudoku.Norvig\Sudoku.Norvig.csproj", "{7457A390-2CED-43CF-BFF7-13C02B5F584E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{62AB0E92-5046-418A-8F33-CCA557174E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62AB0E92-5046-418A-8F33-CCA557174E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62AB0E92-5046-418A-8F33-CCA557174E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7457A390-2CED-43CF-BFF7-13C02B5F584E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7457A390-2CED-43CF-BFF7-13C02B5F584E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7457A390-2CED-43CF-BFF7-13C02B5F584E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7457A390-2CED-43CF-BFF7-13C02B5F584E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
