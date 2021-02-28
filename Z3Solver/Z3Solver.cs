@@ -12,13 +12,13 @@ namespace Z3Solver
     {
         public void Solve(GrilleSudoku s)
         {
-             SolveWithSubstitutions(s);
+           // SolveWithSubstitutions(s);
            //  SolveWithScope(s);
            //  SolveWithAsumptions(s);
-           //  SolveOriginalVersion(s);
-           //  SolveOriginalCleanup(s);
+           // SolveOriginalVersion(s);
+             SolveOriginalCleanup(s);
            //  z3Context.MkTactic("smt");
-           //  SolveOriginalCleanup(s); 
+           
 
         }
 
