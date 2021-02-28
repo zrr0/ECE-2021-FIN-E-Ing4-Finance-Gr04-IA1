@@ -6,7 +6,7 @@ using System.Text;
 using Sudoku.Core;
 using Microsoft.Z3;
 
-namespace Z3Solver
+namespace Sudoku.Z3Solver
 {
     class Z3Solver : ISudokuSolver
     {
