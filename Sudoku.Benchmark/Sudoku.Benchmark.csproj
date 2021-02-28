@@ -20,6 +20,7 @@
     <ProjectReference Include="..\Sudoku.SolverHumain\Sudoku.SolverHumain.csproj" />
     <ProjectReference Include="..\Sudoku.DL\Sudoku.DL.csproj" />
     <ProjectReference Include="..\Sudoku.Swarm\Sudoku.Swarm.csproj" />
+    <ProjectReference Include="..\Sudoku.Z3Solver\Sudoku.Z3Solver.csproj" />
     <ProjectReference Include="..\Z3Solver\Z3Solver.csproj" />
     <ProjectReference Include="..\Sudoku_CNN\Sudoku_CNN.csproj" />
 

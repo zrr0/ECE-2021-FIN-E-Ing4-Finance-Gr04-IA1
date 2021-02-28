@@ -6,19 +6,19 @@ using System.Text;
 using Sudoku.Core;
 using Microsoft.Z3;
 
-namespace Z3Solver
+namespace Sudoku.Z3Solver
 {
     class Z3Solver : ISudokuSolver
     {
         public void Solve(GrilleSudoku s)
         {
-             SolveWithSubstitutions(s);
+           // SolveWithSubstitutions(s);
            //  SolveWithScope(s);
            //  SolveWithAsumptions(s);
-           //  SolveOriginalVersion(s);
-           //  SolveOriginalCleanup(s);
+           // SolveOriginalVersion(s);
+             SolveOriginalCleanup(s);
            //  z3Context.MkTactic("smt");
-           //  SolveOriginalCleanup(s); 
+           
 
         }
 
